@@ -1,0 +1,80 @@
+<!-- Psudeocode(1 player game)
+ CHOOSE from rock paper and scissor
+ STORE the value to a variable as you click fight button
+ GENERATE a random option for the opponent
+ IF player choose rock and computer choose scissor add 1 to player score, (vise versa)
+ IF player choose paper and computer choose rock add 1 to player score, (vise versa)
+ IF player choose scissor and computer choose paper add 1 to player score, (vise versa)
+ADD 1 to roundnumber each try
+IF either reaches score of 5, that wins-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Rock Paper Scissor Game!</h2>
+
+    <div class="playerGround">
+        <select id="mySelect">
+            <option value="none">Choose your weapon</option>
+            <option value="rock">Rock</option>
+            <option value="paper">Paper</option>
+            <option value="scissor">Scissor</option>
+        </select>
+    </div>
+
+    <div class="versusText"></div>
+    <div class="computerGround">
+        <p>Computer Chose: <span class="compChose"></span></p>
+    </div>
+   
+    <div class="fightArea">
+        <button>Fight!</button>
+    </div>
+    <div class="scores">
+        <p>Player Score: <span class="playerScore">0</span></p>
+        <p>Computer Score: <span class="compScore">0</span></p>
+        <p class="result"></p>
+    </div>
+
+    <script>
+        const playerOption=document.querySelector("#mySelect");
+        const fightBtn=document.querySelector("button");
+        const playerScore=document.querySelector(".playerScore");
+        const compScore=document.querySelector(".compScore");
+        const compChose=document.querySelector(".compChose")
+        const result=document.querySelector(".result");
+        const bullet=["rock", "paper", "scissor"];
+        let playerSc=0;
+        let compSc=0;
+        let player="";
+        let computer="";
+
+
+        fightBtn.addEventListener("click",()=>{     
+            player=playerOption.value;
+            let random=Math.floor(Math.random()*3);
+            computer=bullet[random];
+            compChose.textContent=computer;
+            if(player===computer){
+                 result.textContent="Its a tie!"
+            }
+            else if((player==="rock"&&computer==="scissor")||(player==="paper"&&computer==="rock")||(player==="scissor"&&computer==="paper")){
+                playerSc+=1;
+                playerScore.textContent=playerSc;
+                result.textContent="You won this round!";
+            }
+            else{
+                compSc+=1
+                compScore.textContent=compSc;
+                result.textContent="Computer won this round!"
+            }
+
+        });
+    </script>
+</body>
+</html>
