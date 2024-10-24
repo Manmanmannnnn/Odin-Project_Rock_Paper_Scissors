@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        const weapon=["rock","paper","scissor"];
+        
+        
+        function getComputerChoice(){
+        let random=Math.floor(Math.random()*3);
+        let compChoice=weapon[random];
+        return compChoice;
+        }
+
+        function getHumanChoice(){
+            let userChoice=prompt("Choose from the 3 (rock,paper,scissor)","Enter your answer here");
+            userChoice=userChoice;
+            return userChoice;
+        }
+
+        
+        
+        function playGame(){
+            let humanScore=0;
+            let computerScore=0;
+
+            function playRound(humanChoice,computerChoice){
+            console.log(humanChoice);
+            console.log(computerChoice);
+            if(humanChoice===computerChoice)return console.log("Its a tie!");
+            else if((humanChoice==="rock"&&computerChoice==="scissor")||(humanChoice==="paper"&&computerChoice==="rock")||(humanChoice==="scissor"&&computerChoice==="paper")){
+            console.log("You won the round!");
+            return humanScore++;
+            }
+            else{
+                console.log("Computer won the round!");
+                return computerScore++;
+            }
+            
+        }
+            for (let i=1;i<=5;i++){
+                playRound(getHumanChoice(),getComputerChoice());
+                console.log(humanScore);
+                console.log(computerScore);
+            }
+
+
+        }
+
+    
+        
+        
+    </script>
+</body>
+</html>
